@@ -3,11 +3,8 @@ package com.radis.io.controller;
 import com.radis.io.entities.UserEntity;
 import com.radis.io.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,7 +24,6 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    @Cacheable(key = "#id",value = "userEntity")
     public UserEntity add(@RequestBody UserEntity userEntity) {
         return userRepository.save(userEntity);
     }
